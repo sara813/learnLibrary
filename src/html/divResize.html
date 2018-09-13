@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+      .container {
+          width: 100vw;
+          height: 100vh;
+          position: relative;
+          display: flex;
+      }
+
+      .container>div {
+          height: 100%;
+      }
+
+      #leftCnt {
+          width: 300px;
+          background-color: silver;
+      }
+
+      #rightCnt {
+          background-color: black;
+      }
+  </style>
+</head>
+<body>
+  <div class="container">
+      <div id="leftCnt">
+   
+      </div>
+   
+      <div id="rightCnt">
+   
+      </div>
+  </div>
+  <script src="../js/jquery.js"></script>
+  <script>
+    $.fn.onEastDrag = function (opt) {
+        $(this).bind('mousedown', function (downEvent) {
+            var isMoving = false;
+            if (opt.isCatch == undefined || opt.isCatch == null) opt.isCatch = true;
+            var _thisEl = $(this);//获取到控件
+            var _parentEl = _thisEl.parent();
+            var elPosLeft = _thisEl.offset ().left;// 左侧边界位置
+            var oriWidth = _thisEl.width();
+            var startPos = downEvent.pageX;// 鼠标起始位置
+            var startTime = new Date().getTime();
+            
+            // 右侧边界位置
+            var elPosRight = elPosLeft + oriWidth;
+            var regionWidth = opt.regionWidth && opt.regionWidth > 0 ? opt.regionWidth : 6;// 点击响应区域，默认6px宽度
+            // console.log(regionWidth);
+            if (elPosRight - regionWidth <= startPos && startPos <= elPosRight) {
+                isMoving = true;  //如果在右侧边缘偏左6px内.允许移动
+                _parentEl.append('<div id="move-mask-laver" style="position:fixed;width: 100%;height: 100%;z-index: 9999;opacity: 0;top: 0px;cursor: col-resize;"></div>');
+    
+                window.onmousemove = function (moveEvent) {
+                    //如果在范围内
+                    if (isMoving) {
+                        //获取移动的宽度
+                        var move = moveEvent.pageX - startPos;
+                        var ev = {
+                            oriWidth: oriWidth,// 控件最初的宽度
+                            startTime: startTime,// mousedown时间
+                            moveDistance: move,// 移动的距离（与最初位置相比）
+                            downEvent: downEvent,// mousedown事件
+                            moveEvent: moveEvent,// 当前move事件
+                        }
+                        try {
+                            opt.onmousemove(_thisEl, ev);// 宽度设置由调用者决定
+                        } catch (e) {
+                            if (opt.isCatch) console.warn(e);
+                            else throw e;
+                        }
+        
+                    }
+                    //最后返回false;
+                    return false;
+                };
+                //鼠标松开清空所有事件
+                window.onmouseup = function (upEvent) {
+                    window.onmousemove = null;
+                    window.onmouseup = null;
+                    isMoving = false;
+                    _parentEl.find('#move-mask-laver').remove();
+                    if (opt.onmouseup) {
+                        try {
+                            opt.onmouseup(_thisEl, upEvent);
+                        } catch (e) {
+                            if (opt.isCatch) console.warn(e);
+                            else throw e;
+                        }
+                    }
+                };
+                return false;
+            }
+            return true;
+        });
+    }
+
+    $(function(){
+        autoCntWidth();
+    });
+    
+    
+    function autoCntWidth() {
+        $('#rightCnt').width($('#rightCnt').parent().width() - $('#leftCnt').width() - 5);
+    }
+    
+    $('#leftCnt').onEastDrag({
+        onmousemove: function(el,event){
+            el.width(event.oriWidth + event.moveDistance);
+            autoCntWidth();
+        },
+        regionWidth: 10,
+    })
+    </script>
+  </body>
+</html>
