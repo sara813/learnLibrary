@@ -62,7 +62,7 @@
 
 #second {
     background: url("../../image/parallaxScrolling/slide2.jpg") no-repeat fixed;
-    background-size: 100% 100%;
+    /* background-size: 100% 100%; */
     padding: 50px 0;
 }
 
@@ -84,7 +84,7 @@
 
 #third {
     background: url("../../image/parallaxScrolling/slide4.jpg") no-repeat fixed;
-    background-size: 100% 100%;
+    /* background-size: 100% 100%; */
 }
 
 #third article {
@@ -149,7 +149,7 @@
 
 #five {
     background: url("../../image/parallaxScrolling/slide5.jpg") 50% 0 no-repeat fixed;
-    background-size: 100% 100%;
+    /* background-size: 100% 100%; */
 }
 
 #five article {

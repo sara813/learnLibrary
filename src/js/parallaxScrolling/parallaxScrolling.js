@@ -12,10 +12,29 @@ $(document).ready(function(){
         $(window).scroll(function(){
             if(($window.scrollTop() + $window.height()) > (topOffset) && (topOffset + $self.height()) > $window.scrollTop()){
                 var yPos = -($window.scrollTop()/$self.data('speed'));
-                console.log($window.scrollTop(), 111, $self.data('speed'), 2222, yPos, 333, $self.data('offsetY'));
+                
                 if($self.data('offsetY')){
                     yPos += $self.data('offsetY');
                 }
+                var coords = '50% ' + yPos + 'px';
+                $self.css({backgroundPosition: coords});
+
+                $('[data-type="sprite"]', $self).each(function(){
+                    var $sprite = $(this);
+                    var yPos = -($window.scrollTop()/$sprite.data('speed'));
+                    var coords = $sprite.data('Xpositon') + ' ' + (yPos + $sprite.data('offsetY') + 'px');
+                    // console.log($sprite.data('speed'), coords);
+                    $sprite.css({backgroundPosition: coords});
+                });
+
+                $('[data-type="video"]', $self).each(function(){
+                    var $video = $(this);
+                    var yPos = -($window.scrollTop()/$video.data('speed'));
+                    var coords = (yPos + $video.data('offsetY') + 'px');
+                    // console.log($sprite.data('speed'), coords);
+                    $video.css({top: coords});
+                });
+
             }
         });
     });
