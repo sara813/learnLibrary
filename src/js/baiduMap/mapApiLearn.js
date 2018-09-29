@@ -13,7 +13,25 @@ function addLoadEvent(func) {
     }
 }
 
-addLoadEvent(mapHandler);
+// addLoadEvent(mapHandler);
+addLoadEvent(loadJScript);
+
+function loadJScript() {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "http://api.map.baidu.com/api?v=3.0&ak=wfwvIiniK73zCEaGIuTEujVgx0U55lIo&callback=init";
+    document.body.appendChild(script);
+    
+
+    function init() {
+        console.log(script);
+        var map = new BMap.Map("container");
+        var point = new BMap.Point(116.404, 39.915);
+        map.centerAndZoom(point, 15);
+        map.enableScrollWheelZoom(true);
+    }
+}
+
 
 function mapHandler() {
     var map = new BMap.Map("container");
@@ -119,6 +137,18 @@ function mapHandler() {
 
     var mySquare = new SquareOverlay(point, 100, "red");
     map.addOverlay(mySquare);
+
+    var infoOpts = {
+        width: 250,
+        height: 100,
+        title: "Hello"
+    }
+    var infoWindow = new BMap.InfoWindow("World", infoOpts);
+    map.openInfoWindow(infoWindow, map.getCenter());
+
+    // 添加图层
+    var traffic = new BMap.TrafficLayer();
+    map.addTileLayer(traffic);
 
 
 

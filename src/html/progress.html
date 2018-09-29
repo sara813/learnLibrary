@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自定义进度条</title>
+    <link rel="stylesheet" href="../css/progress.css">
+</head>
+<body>
+    <main class="main-ctnr">
+        <div class="progress-ctnr">
+            <div class="item-ctnr">
+                <div class="item-progress"></div>
+            </div>
+            <div class="item-ctnr divi-dot">
+                <div class="item-progress"></div>
+            </div>
+            <div class="item-ctnr divi-dot add-content">
+                <div class="item-progress"></div>
+            </div>
+            <div id="itemCtnr" class="item-ctnr divi-dot add-content2">
+                <div id="itemProgress" class="item-progress"></div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/jquery.js"></script>
+    <script>
+        /*--------------------
+        文档装载完成后加载JS方法 
+        --------------------*/
+        function addLoadEvent(func) {
+            var oldOnload = window.onload;
+            if (typeof window.onload != "function") {
+                window.onload = func;
+            } else {
+                window.onload = function () {
+                    oldOnload();
+                    func();
+                }
+            }
+        }
+
+        addLoadEvent(progressHandler);
+
+        function progressHandler() {
+            var widthPer = 0.7;
+            var itemCtnrWidth = $("#itemCtnr").width();
+            var itemProWidth = itemCtnrWidth * widthPer;
+            $("#itemProgress").css("width", itemProWidth);
+        }
+    </script>
+</body>
+</html>
