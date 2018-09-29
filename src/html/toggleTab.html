@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>toggle tab</title>
+    <link rel="stylesheet" href="../css/toggleTab.css">
+</head>
+<body>
+    <main class="main-ctnr">
+        <div class="content-ctnr">
+            <div class="selected-ctnr">
+                <ul>
+                    <li>
+                        <div id="chinaTab" class="selected-tab">
+                            <p>China</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div id="indiaTab">
+                            <p>India</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div id="chinaSec" class="country-info display-show">
+                <p><span>Head Office</span></p>
+                <p><strong>Mail: </strong><span> contactus@sunmi.com</span></p>
+                <p><strong>Phone: </strong><span> 0086-400-902-1168</span></p>
+                <p><strong>Address: </strong><span>Room 605，7 KIC, 388 Songhu Rd, Shanghai</span></p>
+                <p><strong>Postcode: </strong><span>200433</span></p>
+            </div>
+            <div id="indiaSec" class="country-info display-hidden">
+                <p><span>Sunmi India Private Limited</span></p>
+                <p><strong>Mail: </strong><span>govindp@sunmi.com</span></p>
+                <p><strong>Phone: </strong><span>+91 9821801511</span></p>
+                <p>
+                    <strong>Address: </strong><span>Awfis, Level-2, Augusta Point, Sector-53, Golf course road, Gurgaon, Haryana</span>
+                </p>
+                <p><strong>Postcode: </strong><span>122011</span></p>
+            </div>
+
+        </div>
+    </main>
+    <script src="../js/jquery.js"></script>
+    <script>
+        /*--------------------
+        文档装载完成后加载JS方法 
+        --------------------*/
+        function addLoadEvent(func) {
+            var oldOnload = window.onload;
+            if (typeof window.onload != "function") {
+                window.onload = func;
+            } else {
+                window.onload = function () {
+                    oldOnload();
+                    func();
+                }
+            }
+        }
+
+        addLoadEvent(toggleHandler);
+
+        function toggleHandler() {
+            $(".selected-ctnr li").on("click", function(){
+                $(".selected-ctnr li div").removeClass("selected-tab");
+                $(this).children("div").addClass("selected-tab");
+                var tabId = $(this).children("div").attr("id");
+                if(tabId=="chinaTab") {
+                    $("#chinaSec").removeClass("display-hidden").removeClass("display-show").addClass("display-show");
+			        $("#indiaSec").removeClass("display-hidden").removeClass("display-show").addClass("display-hidden");
+                }
+                else {
+                    $("#chinaSec").removeClass("display-hidden").removeClass("display-show").addClass("display-hidden");
+			        $("#indiaSec").removeClass("display-hidden").removeClass("display-show").addClass("display-show");
+                }
+            });
+        }
+    </script>
+</body>
+</html>
