@@ -1,0 +1,92 @@
+
+.page-main {
+    width: 100%;
+    min-height: 1000px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.table-sec {
+    width: 100%;
+    margin: 10rem 0;
+    display: flex;
+    justify-content: center;
+}
+
+.coll-point-list {
+    width: 80%;
+    border: none;
+    border-collapse: collapse; 
+}
+
+.coll-point-list tr {
+    height:calc(100*0.694rem/16);
+    border: none;
+    background-color: #F8F8F8;
+}
+
+.coll-point-list tr:nth-child(2n+1) {
+    background-color: #fff;
+}
+
+.coll-point-list th,
+.coll-point-list td  {
+    text-align: center;
+    width: 15%;
+    color: #191919;
+    border: 0.7px solid #ddd;
+}
+
+.coll-point-list tr th:first-child,
+.coll-point-list tr td:first-child {
+    width: 8%;
+}
+
+.coll-point-list .address-col {
+    width: 32%;
+}
+
+.coll-point-list th {
+    font-size: calc(28*0.694rem/16);
+    font-weight: 600;
+    background-color: #fff;
+}
+
+.coll-point-list td {
+    font-size: calc(24*0.694rem/16);
+    font-weight: 400;
+}
+
+@media screen and (max-width: 750px){
+
+    .table-sec {
+        margin: 15rem 0;
+    }
+
+    .coll-point-list {
+        width: 100%;
+    }
+
+    .coll-point-list tr {
+        height:3.125rem; 
+    }
+
+    .coll-point-list th, 
+    .coll-point-list td {
+        font-size: 0.875rem;
+        line-height: 1.2rem;
+        border: 1px solid #E4E4E4;
+        padding-left: 2.5rem;
+    }
+
+    .coll-point-list th {
+        font-weight: 600;
+    }
+
+    .coll-point-list td {
+        font-weight: 400;
+    }
+}
