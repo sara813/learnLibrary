@@ -9,9 +9,14 @@ module.exports = {
         app: "./src/index.js",
         print: "./src/print.js"
     },
+    devtool: "inline-source-map",
+    devServer: {
+        contentBase: "./dist"
+    },
     output: {
         path: path.resolve(__dirname, "dist"),
-        filename: "[name].bundle.js"
+        filename: "[name].bundle.js",
+        publicPath: "/"
     },
     plugins: [
         new htmlWebpackPlugin({
