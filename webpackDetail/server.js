@@ -1,15 +1,19 @@
-const express = require("express");
-const webpack = require("webpack");
-const webpackDevMiddleware = require("webpack-dev-middleware");
 
-const app = express();
+const webpack = require("webpack");
+const webpackDevServer = require("webpack-dev-server");
+
 const config = require("./webpack.config.js");
+const option = {
+    contentBase: "./dist",
+    hot: true,
+    host: "localhost"
+};
+
+webpackDevServer.addDevServerEntrypoints(config, option);
 const compiler = webpack(config);
 
-app.use(webpackDevMiddleware(compiler, {
-    publicPath: config.output.publicPath
-}));
+const server = new webpackDevServer(compiler, option);
 
-app.listen(3008, function(){
+server.listen(5000, function(){
     console.log("Example app listening on port 3000!");
 });
