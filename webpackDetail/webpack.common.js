@@ -10,16 +10,11 @@ module.exports = {
     plugins: [
         new cleanWebpackPlugin(["dist"]),
         new htmlWebpackPlugin({
-            title: "Production"
+            title: "Caching"
         })
     ],
     output: {
-        filename: "[name].bundle.js",
+        filename: "[name].[chunkhash].js",
         path: path.resolve(__dirname, "dist")
-    },
-    optimization: {
-        splitChunks: {
-            chunks: "all"
-        }
     }
 };
