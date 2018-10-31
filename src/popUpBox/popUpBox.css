@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.page-main {
+    width: 100%;
+    min-height: 900px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.popUp-ctnr {
+    width: 200px;
+    position: relative;
+}
+
+.input-popUp-ctnr {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.input-popUp-ctnr input {
+    width: 80%;
+    border: 1px solid #eee;
+    height: 20px;
+}
+
+.input-popUp-ctnr button {
+    width: 15%;
+    border: 1px solid #eee;
+}
+
+.popUp-box-ctnr {
+    width: 100%;
+    height: 200px;
+    background-color: bisque;
+    position: absolute;
+    left: 0;
+    top: 20px;
+    display: none;
+}
+
