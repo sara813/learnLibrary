@@ -64,17 +64,21 @@
 
 .add-content2::before {
     content:"|"; 
+    font-size: 16px;
+    line-height: 1;
     position: absolute;
     left: 0;
-    top: 0;
+    top: 50%;
     transform: translate(-100%, -50%);
 }
 
 .add-content2::after {
     content:"|"; 
+    font-size: 16px;
+    line-height: 1;
     position: absolute;
     right: 0;
-    top: 0;
+    top: 50%;
     transform: translate(100%, -50%);
 }
 
@@ -91,7 +95,7 @@
 
 .rect-prog {
     height: 5px;
-    background-color: #333;
+    background-color: #828282;
     z-index: 1;
 }
 
@@ -102,6 +106,8 @@
 
 .diamond-prog::after {
     content:"◆"; 
+    font-size: 16px;
+    line-height: 1;
     position: absolute;
     right: 0;
     top: 50%;
