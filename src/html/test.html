@@ -6,30 +6,43 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>菜鸟教程(runoob.com)</title>
     <style>
-        .flex-div {
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            align-items: flex-start;
-        }
-
-        .zoushitu {
-            background-color: #c39e4e;
-        }
-
-        .sifenwei {
-            background-color: #c95b60;
-        }
 
     </style>
 </head>
 <body>
-    <h1>我的第一个标题</h1>
-    <p>我的第一个段落。</p>
-    <div class="flex-div">
-        <button class="zoushitu">走势图</button>
-        <button class="sifenwei">四分位</button>
-    </div>
+    <button id="myBtn">Click Me</button>
+    <script>
+        /*--------------------
+        文档装载完成后加载JS方法 
+        --------------------*/
+        function addLoadEvent(func) {
+            var oldOnload = window.onload;
+            if (typeof window.onload != "function") {
+                window.onload = func;
+            } else {
+                window.onload = function () {
+                    oldOnload();
+                    func();
+                }
+            }
+        }
+
+        addLoadEvent(eventHandler);
+
+        function eventHandler() {
+            var btn = document.getElementById("myBtn");
+            btn.onclick = function(event) {
+                alert(event.eventPhase);
+            };
+
+            document.body.addEventListener("click", function(event){
+                alert(event.eventPhase);
+            }, true);
+
+            document.body.onclick = function(event) {
+                alert(event.eventPhase);
+            };
+        }
+    </script>
 </body>
 </html>

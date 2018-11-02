@@ -77,3 +77,33 @@
     top: 0;
     transform: translate(100%, -50%);
 }
+
+/* .divi-comb .item-progress {
+    background-color: rgba(0, 0, 0, 0.6);
+    
+} */
+
+.comb-progress {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.rect-prog {
+    height: 5px;
+    background-color: #333;
+    z-index: 1;
+}
+
+.diamond-prog {
+    height: 2px;
+    z-index: 2;
+}
+
+.diamond-prog::after {
+    content:"◆"; 
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(100%, -50%);
+}
