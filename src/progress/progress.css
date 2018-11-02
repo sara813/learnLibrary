@@ -28,40 +28,6 @@
     margin-bottom: 50px;
 }
 
-.item-progress {
-    height: 2px;
-    background-color: #fff;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 50%;
-}
-
-.divi-dot .item-progress {
-    background-color: rgba(0, 0, 0, 0.6);
-    border-right: solid 5px #fff;
-}
-
-.add-content::before {
-    content:""; 
-    border: 5px solid rgba(0, 0, 0, 0.6);
-    border-radius: 3px;
-    position: absolute;
-    left: 0;
-    top: 0;
-    transform: translate(-100%, -50%);
-}
-
-.add-content::after {
-    content:""; 
-    border: 5px solid rgba(0, 0, 0, 0.6);
-    border-radius: 3px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    transform: translate(100%, -50%);
-}
-
 .add-content2::before {
     content:"|"; 
     font-size: 16px;
@@ -81,11 +47,6 @@
     top: 50%;
     transform: translate(100%, -50%);
 }
-
-/* .divi-comb .item-progress {
-    background-color: rgba(0, 0, 0, 0.6);
-    
-} */
 
 .comb-progress {
     position: absolute;

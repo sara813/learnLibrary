@@ -10,18 +10,6 @@
 <body>
     <main class="main-ctnr">
         <div class="progress-ctnr">
-            <div class="item-ctnr">
-                <div class="item-progress"></div>
-            </div>
-            <div class="item-ctnr divi-dot">
-                <div class="item-progress"></div>
-            </div>
-            <div class="item-ctnr divi-dot add-content">
-                <div class="item-progress"></div>
-            </div>
-            <div id="itemCtnr" class="item-ctnr divi-dot add-content2">
-                <div id="itemProgress" class="item-progress"></div>
-            </div>
             <div id="diviCombCtnr" class="item-ctnr divi-comb add-content2">
                 <div id="diamondPro" class="comb-progress diamond-prog"></div>
             </div>
@@ -48,21 +36,18 @@
         addLoadEvent(progressHandler);
 
         function progressHandler() {
-            var widthPer = 0.7;
             var leftP = 0.2;
             var rightP = 0.6;
             var diamondWidth = 0.5;
-            var itemCtnrWidth = $("#itemCtnr").width();
-            var itemProWidth = itemCtnrWidth * widthPer;
-            $("#itemProgress").css("width", itemProWidth);
+            var itemCtnrWidth = $("#diviCombCtnr").width();
 
             var rectPro = document.createElement("div");
             rectPro.classList.add("comb-progress");
             rectPro.classList.add("rect-prog");
             rectPro.setAttribute("id", "rectProg");
             $("#diviCombCtnr").append(rectPro);
-            $("#rectProg").css("width", (itemCtnrWidth*0.6 - itemCtnrWidth*0.2)).css("left", (itemCtnrWidth*0.2 + "px"));
-            $("#diamondPro").css("width", itemProWidth);
+            $("#rectProg").css("width", (itemCtnrWidth*rightP - itemCtnrWidth*leftP)).css("left", (itemCtnrWidth*leftP + "px"));
+            $("#diamondPro").css("width", diamondWidth*itemCtnrWidth);
         }
 
         
